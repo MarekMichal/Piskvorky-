@@ -34,3 +34,4 @@
 - animácie
 - balance fixy
 - bugfixy
+xdddddddddddddddddd
