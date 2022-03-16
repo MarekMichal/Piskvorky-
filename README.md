@@ -2,11 +2,16 @@
 ## GUI Menu
 - Start
 - Guit game
+- Help
+- Register
+- Pause
+- Login
 ### Nastavenia hry
 - Sound slider
 - Music slider
 - farba kruhov a krížikov
 - farba stien a žolíkov
+- Veľkosť a tvar krížikov
 ## Hracie pole
 - Veľkosť poľa
 - percento zaplnenia stien a žolíkov 
