@@ -33,7 +33,7 @@
 - registračné menu
 - prepojenie databázy s registračným menu
 ## Details
--background music (if possible)
+- background music (if possible)
 - spravit .exe
 - design/art
 - animácie
