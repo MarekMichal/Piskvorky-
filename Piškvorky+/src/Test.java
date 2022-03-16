@@ -15,6 +15,7 @@ public class Test extends javax.swing.JFrame {
      */
     public Test() {
         initComponents();
+        System.out("TomasFojtik");
     }
 
     /**
