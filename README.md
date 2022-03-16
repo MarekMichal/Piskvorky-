@@ -32,8 +32,8 @@
 ## databáza
 - registračné menu
 - prepojenie databázy s registračným menu
-- background music
- (if possible)
+## Details
+-background music (if possible)
 - spravit .exe
 - design/art
 - animácie
