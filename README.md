@@ -1,7 +1,7 @@
 # Piskvorky-
 ## GUI Menu
 - Start
-- Guit game
+- Quit game
 - Help
 - Register
 - Pause
