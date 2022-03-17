@@ -13,7 +13,7 @@
 - In game money
 ## Shop
 - Farba kruhov a krížikov
-- Avatar
+- Avatar (https://fireart.studio/cases/google-play/)
 - Farba Nicku
 ## Nastavenia hry
 - Sound slider
