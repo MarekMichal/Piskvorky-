@@ -11,10 +11,13 @@
 - Nick
 - Avatar
 - In game money
+## SHOP
+- farba kruhov a krížikov
+- avatar
+- farba Nicku
 ### Nastavenia hry
 - Sound slider
 - Music slider
-- farba kruhov a krížikov
 - farba stien a žolíkov
 - Veľkosť a tvar krížikov
 ## Hracie pole
@@ -22,7 +25,7 @@
 - percento zaplnenia stien a žolíkov 
  (nastaviteľné pri zapnutí hry)
 - potrebný počet krížikov/kruhov na prepojenie
- (nastaviteľné pri zapnutí hry)- 
+ (nastaviteľné pri zapnutí hry)
 ### Hrači
 - Kružky a krížiky
  (funkčnosť)
