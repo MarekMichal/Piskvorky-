@@ -15,7 +15,7 @@
 - Farba kruhov a krížikov
 - Avatar
 - Farba Nicku
-### Nastavenia hry
+## Nastavenia hry
 - Sound slider
 - Music slider
 - Farba stien a žolíkov
@@ -26,7 +26,7 @@
  (nastaviteľné pri zapnutí hry)
 - Potrebný počet krížikov/kruhov na prepojenie
  (nastaviteľné pri zapnutí hry)
-### Hrači
+## Hrači
 - Kružky a krížiky
  (funkčnosť)
 - Steny
@@ -37,7 +37,7 @@
  (čas na ťah)
 - Score
 - Win/lose screen
-## databáza
+## Databáza
 - registračné menu
 - prepojenie databázy s registračným menu
 ## Details
