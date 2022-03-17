@@ -1,4 +1,4 @@
-# Piskvorky-
+# Piskvorky+
 ## GUI Menu
 - Start
 - Quit game
@@ -38,13 +38,13 @@
 - Score
 - Win/lose screen
 ## Databáza
-- registračné menu
-- prepojenie databázy s registračným menu
+- Registračné menu
+- Prepojenie databázy s registračným menu
 ## Details
-- background music (if possible)
-- spravit .exe
-- design/art
-- animácie
-- balance fixy
-- bugfixy
+- Background music (if possible)
+- Spravit .exe
+- Design/art
+- Animácie
+- Balance fixy
+- Bugfixy
 
