@@ -6,6 +6,11 @@
 - Register
 - Pause
 - Login
+- In game shop
+## Profil
+- Nick
+- Avatar
+- In game money
 ### Nastavenia hry
 - Sound slider
 - Music slider
