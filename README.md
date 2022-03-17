@@ -11,32 +11,32 @@
 - Nick
 - Avatar
 - In game money
-## SHOP
-- farba kruhov a krížikov
-- avatar
-- farba Nicku
+## Shop
+- Farba kruhov a krížikov
+- Avatar
+- Farba Nicku
 ### Nastavenia hry
 - Sound slider
 - Music slider
-- farba stien a žolíkov
+- Farba stien a žolíkov
 - Veľkosť a tvar krížikov
 ## Hracie pole
 - Veľkosť poľa
-- percento zaplnenia stien a žolíkov 
+- Percento zaplnenia stien a žolíkov 
  (nastaviteľné pri zapnutí hry)
-- potrebný počet krížikov/kruhov na prepojenie
+- Potrebný počet krížikov/kruhov na prepojenie
  (nastaviteľné pri zapnutí hry)
 ### Hrači
 - Kružky a krížiky
  (funkčnosť)
-- steny
+- Steny
  (funkčnosť)
-- žolíky
+- Žolíky
  (funkčnosť)
-- časovač na online
+- Časovač na online
  (čas na ťah)
-- score
-- win/lose screen
+- Score
+- Win/lose screen
 ## databáza
 - registračné menu
 - prepojenie databázy s registračným menu
