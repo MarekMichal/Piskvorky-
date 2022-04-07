@@ -7,7 +7,7 @@ SET time_zone = "+00:00";
 
 
 CREATE DATABASE `piskvorky` CHARACTER SET utf8 COLLATE utf8_slovak_ci;
-
+USE piskvorky;
 
 
 
