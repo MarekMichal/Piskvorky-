@@ -1,4 +1,5 @@
-
+CREATE DATABASE `piskvorky` CHARACTER SET utf8 COLLATE utf8_slovak_ci;
+USE piskvorky;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -6,13 +7,11 @@ SET time_zone = "+00:00";
 
 
 
-CREATE DATABASE `piskvorky` CHARACTER SET utf8 COLLATE utf8_slovak_ci;
-USE piskvorky;
 
 
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+
+CREATE TABLE  `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nick` varchar(50) COLLATE utf8_slovak_ci NOT NULL,
   
