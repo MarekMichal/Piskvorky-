@@ -1,7 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* databaza connect(treba upravit)
+ var results = [];
+for (var i=0; i<employee.length; i++) {
+    for (var j=0; j<department.length; j++) {
+        results.push({
+            employee_name: employee[i].name, 
+            employee_department_id: employee[i].department_id,
+            department_id: department[j].department_id,
+            department_name: department[j].name
+        });
+    }
+}
  */
 
 /**
