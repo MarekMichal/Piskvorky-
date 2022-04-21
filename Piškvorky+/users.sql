@@ -20,6 +20,7 @@ CREATE TABLE  `users` (
   `vyhry` int(11) NOT NULL,
   `prehry` int(11) NOT NULL,
   `remizy` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_slovak_ci;
 
