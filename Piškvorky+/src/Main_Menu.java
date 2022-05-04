@@ -80,11 +80,11 @@ public class Main_Menu extends javax.swing.JFrame {
         });
 
         jButton5.setText("Profile");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        /*jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton5MouseClicked(evt);
             }
-        });
+        });*/
 
         jButton6.setText("Quit Game");
         jButton6.setName(""); // NOI18N
@@ -189,14 +189,14 @@ public class Main_Menu extends javax.swing.JFrame {
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt){
+   /* private void jButton5MouseClicked(java.awt.event.MouseEvent evt){
         Profile jfrm2= new Profile();
         jfrm2.setSize(500, 500); 
         jfrm2.setVisible(true);
         this.setVisible(false);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         this.dispose();
-    }
+    }*/
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
