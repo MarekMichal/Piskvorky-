@@ -16,7 +16,7 @@ public class TicTacToe implements ActionListener {
     TicTacToe() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 800);
-        frame.getContentPane().setBackground(new Color(50, 50, 50));
+        frame.getContentPane().setBackground(new Color(100, 100, 100));
         frame.setTitle("Tic Tac Toe");
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);
@@ -29,9 +29,9 @@ public class TicTacToe implements ActionListener {
         textfield.setOpaque(true);
         t_panel.setLayout(new BorderLayout());
         t_panel.setBounds(0, 0, 800, 100);
-        bt_panel.setLayout(new GridLayout(3, 3));
+        bt_panel.setLayout(new GridLayout(FieldSizeVerticalNumber, FieldSizeHorizontalNumber));
         bt_panel.setBackground(new Color(150, 150, 150));
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < FieldSizeVerticalNumber * FieldSizeHorizontalNumber; i++) {
             bton[i] = new JButton();
             bt_panel.add(bton[i]);
             bton[i].setFont(new Font("Ink Free", Font.BOLD, 120));
@@ -46,7 +46,7 @@ public class TicTacToe implements ActionListener {
     }
     public void startGame() {
         try {
-            textfield.setText("vydržžžž....");
+            textfield.setText("Continue....");
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();

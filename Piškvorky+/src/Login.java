@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 /**
  *
  * @author marek
@@ -142,7 +144,17 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
           String email= Lemail.getText();
         String password = new String (Lpassword.getPassword());
-        if(email.equals())
+        try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/piskvorky","root","");
+                Statement sta = connection.createStatement();
+
+                sta.executeUpdate("SELECT FROM users (email, password)"
+                +"VALUES ( '"+email+"', '"+password+"')");
+
+            }
+            catch (Exception e){
+                System.out.println(e.getMessage());
+            }
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
