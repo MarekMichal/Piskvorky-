@@ -19,7 +19,6 @@ public class Piškvorky_shop extends javax.swing.JFrame {
     private void initComponents() {
 
         shop1 = new javax.swing.JLabel();
-        shop1.setIcon(new javax.swing.ImageIcon("https://github.com/MarekMichal/Piskvorky-/blob/main/Pi%C5%A1kvorky%2B/Resources/avatary2/18a.png"));
         shop2 = new javax.swing.JLabel();
         shop3 = new javax.swing.JLabel();
         button1 = new javax.swing.JButton();

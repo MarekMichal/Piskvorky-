@@ -69,6 +69,11 @@ public class Start extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Time to think");
 
@@ -188,14 +193,21 @@ public class Start extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        String TimeToThink = TimeToThinkInt.getText();
+       String TimeToThink = TimeToThinkInt.getText();
         int TimeToThinkNumber = Integer.valueOf(TimeToThink);
+        
         String FieldSizeVertical = FieldSizeVerticalInt.getText();
         int FieldSizeVerticalNumber = Integer.valueOf(FieldSizeVertical);
         String FieldSizeHorizontal = FieldSizeHorizontalInt.getText();
         int FieldSizeHorizontalNumber = Integer.valueOf(FieldSizeHorizontal);
+        TicTacToe obj= new TicTacToe();
+        obj.my_update( TimeToThinkNumber,  FieldSizeVerticalNumber,  FieldSizeHorizontalNumber);
         new TicTacToe();
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

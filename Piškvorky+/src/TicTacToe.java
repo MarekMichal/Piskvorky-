@@ -2,13 +2,20 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+
 public class TicTacToe implements ActionListener {
   
+    public void my_update(int TimeToThinkNumber, int FieldSizeVerticalNumber, int FieldSizeHorizontalNumber) {
+		int TTTN = TimeToThinkNumber;
+                                        int FSVN = FieldSizeVerticalNumber;
+                                        int FSHN = FieldSizeHorizontalNumber;
+	}
+    private int TTTN,FSVN,FSHN;
     JFrame frame = new JFrame();
     JPanel t_panel = new JPanel();
     JPanel bt_panel = new JPanel();
     JLabel textfield = new JLabel();
-    JButton[] bton = new JButton[9];
+    JButton[] bton = new JButton[(FSVN * FSHN)];
     int chance_flag = 0;
     Random random = new Random();
     boolean pl1_chance;
@@ -29,9 +36,9 @@ public class TicTacToe implements ActionListener {
         textfield.setOpaque(true);
         t_panel.setLayout(new BorderLayout());
         t_panel.setBounds(0, 0, 800, 100);
-        bt_panel.setLayout(new GridLayout(FieldSizeVerticalNumber, FieldSizeHorizontalNumber));
+        bt_panel.setLayout(new GridLayout(FSVN, FSHN));
         bt_panel.setBackground(new Color(150, 150, 150));
-        for (int i = 0; i < FieldSizeVerticalNumber * FieldSizeHorizontalNumber; i++) {
+        for (int i = 0; i < (FSVN * FSHN); i++) {
             bton[i] = new JButton();
             bt_panel.add(bton[i]);
             bton[i].setFont(new Font("Ink Free", Font.BOLD, 120));
@@ -122,7 +129,7 @@ public class TicTacToe implements ActionListener {
         } else if ((bton[6].getText() == "O") && (bton[7].getText() == "O") && (bton[8].getText() == "O")) {
             oWins(6, 7, 8);
         }
-        else if(chance_flag==9) {
+        else if(chance_flag==(FSVN * FSHN)) {
             textfield.setText("Match Tie");
              gameOver("Match Tie");
         }
@@ -131,7 +138,7 @@ public class TicTacToe implements ActionListener {
         bton[x1].setBackground(Color.RED);
         bton[x2].setBackground(Color.RED);
         bton[x3].setBackground(Color.RED);
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < (FSVN * FSHN); i++) {
             bton[i].setEnabled(false);
         }
         textfield.setText("X vyhral");
@@ -141,7 +148,7 @@ public class TicTacToe implements ActionListener {
         bton[x1].setBackground(Color.RED);
         bton[x2].setBackground(Color.RED);
         bton[x3].setBackground(Color.RED);
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < (FSVN * FSHN); i++) {
             bton[i].setEnabled(false);
         }
         textfield.setText("O vyhral");
@@ -150,7 +157,7 @@ public class TicTacToe implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < (FSVN * FSHN); i++) {
             if (e.getSource() == bton[i]) {
                 if (pl1_chance) {
                     if (bton[i].getText() == "") {
