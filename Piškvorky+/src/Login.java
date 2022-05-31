@@ -11,6 +11,8 @@ import java.sql.Statement;
  * @author marek
  */
 public class Login extends javax.swing.JFrame {
+    
+public static boolean LoggedIn;
 
     /**
      * Creates new form Login
@@ -133,7 +135,6 @@ public class Login extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         Profile jfrm2= new Profile();
-        jfrm2.setSize(500, 500); 
         jfrm2.setVisible(true);
         this.setVisible(false);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -145,18 +146,27 @@ public class Login extends javax.swing.JFrame {
           String email= Lemail.getText();
         String password = new String (Lpassword.getPassword());
         try {
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/piskvorky","root","");
+            Connection DB = Database.connect();
+            String userpassword = Database.getPassword(DB, email);
+            if(userpassword == password)
+                    {
+                   LoggedIn = true;
+                    }
+            
+            /*    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/piskvorky","root","");
                 Statement sta = connection.createStatement();
 
                 sta.executeUpdate("SELECT FROM users (email, password)"
                 +"VALUES ( '"+email+"', '"+password+"')");
-
+*/
             }
             catch (Exception e){
                 System.out.println(e.getMessage());
             }
     }//GEN-LAST:event_jButton1MouseClicked
-
+public static boolean getLog(){
+    return LoggedIn;
+        }
     /**
      * @param args the command line arguments
      */
