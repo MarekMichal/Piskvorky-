@@ -151,7 +151,21 @@ public class Database {
             throw new RuntimeException(e.toString());
         }
     }
+public static int getMoney(Connection DB, String email){
+        PreparedStatement ps = null;
+        ResultSet result = null;
 
+        try{
+            String sql = "SELECT money FROM user WHERE email = ?";
+            ps = DB.prepareStatement(sql);
+            ps.setString(1, email);
+            result = ps.executeQuery();
+
+            return result.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e.toString());
+        }
+    }
 
 }
 

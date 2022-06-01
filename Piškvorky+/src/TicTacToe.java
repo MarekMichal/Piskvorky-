@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
 import java.util.*;
 import javax.swing.*;
 
@@ -89,11 +90,12 @@ public class TicTacToe implements ActionListener {
     
     }
     public void matchCheck() {
-        for(int i = 0; i<FSVN-RWTN;i++){
-        for(int j = 0; j<FSHN-RWTN;j++){
+         for(int i = 0; i<=FSHN;i++){                    
+        for(int j = 0; j<=FSVN;j++){
         switch (RWTN){
             case 3:
                 //stlpce  X
+               
                 if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X")) {
             xWins();
         }
@@ -364,7 +366,9 @@ public class TicTacToe implements ActionListener {
              gameOver("Match Tie");
         }
          //}
+      //    j = 0;
         }
+     //  i=0;
         }
     }
     public void xWins() {
@@ -374,8 +378,20 @@ public class TicTacToe implements ActionListener {
             bton[i][j].setEnabled(false);
         }
     }
-        textfield.setText("X vyhral");
-        gameOver("X vyhral");
+          
+        Connection DB = Database.connect();
+          String user_nick = Database.getMeno(DB, Login.user_mail);
+
+        textfield.setText(user_nick + " vyhral");
+        gameOver(user_nick +" vyhral");
+        System.out.println(Login.user_mail);
+        
+        int user_money = Database.getMoney(DB,Login.user_mail);
+        int user_vyhry = Database.getVyhry(DB,Login.user_mail);
+        int user_prehry = Database.getPrehry(DB,Login.user_mail);
+        int user_remizy = Database.getRemizy(DB, Login.user_mail);
+        Database.updateUser(DB, user_money, 5, user_prehry, user_remizy, Login.user_mail);
+        
     }
     public void oWins() {
      

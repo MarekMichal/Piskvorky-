@@ -77,6 +77,11 @@ public class Register extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,14 +159,14 @@ public class Register extends javax.swing.JFrame {
             Connection DB = Database.connect();
             Database.register(DB, email, password, nick, 0 ,0 ,0 ,0);
             DB.close();
-            /*
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/piskvorky","root","");
-                Statement sta = connection.createStatement();
-
-                sta.executeUpdate("INSERT INTO users (nick, email, password)"
-                +"VALUES ('"+nick+"', '"+email+"', '"+password+"')");
-
-           */ }
+            
+            
+            Login jfrm2= new Login();
+        jfrm2.setVisible(true);
+        this.setVisible(false);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        this.dispose(); 
+        }
             catch (Exception e){
                 System.out.println(e.getMessage());
             }
@@ -171,6 +176,10 @@ public class Register extends javax.swing.JFrame {
     private void NickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NickActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NickActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
