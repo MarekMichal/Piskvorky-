@@ -5,13 +5,11 @@ import javax.swing.*;
 
 public class TicTacToe implements ActionListener {
   
-    public void my_update( int FieldSizeVerticalNumber, int FieldSizeHorizontalNumber, int RequiredWinningTilesNumber) {
-		
-                                        int FSVN = FieldSizeVerticalNumber;
-                                        int FSHN = FieldSizeHorizontalNumber;
-                                        int RWTN = RequiredWinningTilesNumber;
-	}
-    private int FSVN,FSHN,RWTN;
+    
+     int RWTN = Start.RequiredWinningTiles;
+        int FSVN = Start.FieldSizeVertical;
+         int FSHN = Start.FieldSizeHorizontal;
+    
     JFrame frame = new JFrame();
     JPanel t_panel = new JPanel();
     JPanel bt_panel = new JPanel();
@@ -36,10 +34,16 @@ public class TicTacToe implements ActionListener {
         textfield.setText("Tic Tac Toe");
         textfield.setOpaque(true);
         
+        
+        
         t_panel.setLayout(new BorderLayout());
         t_panel.setBounds(0, 0, 1000, 100);
+        
         bt_panel.setLayout(new GridLayout(FSVN, FSHN));
         bt_panel.setBackground(new Color(150, 150, 150));
+        
+        
+        
         for (int i = 0; i < FSVN ; i++) {
             for (int j = 0; j < FSHN;j++){
             bton[i][j] = new JButton();
@@ -87,7 +91,6 @@ public class TicTacToe implements ActionListener {
     public void matchCheck() {
         for(int i = 0; i<FSVN-RWTN;i++){
         for(int j = 0; j<FSHN-RWTN;j++){
-     //  for(int x= 0; x<FSHN;x++){
         switch (RWTN){
             case 3:
                 //stlpce  X
