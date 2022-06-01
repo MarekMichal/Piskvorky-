@@ -5,17 +5,18 @@ import javax.swing.*;
 
 public class TicTacToe implements ActionListener {
   
-    public void my_update(int TimeToThinkNumber, int FieldSizeVerticalNumber, int FieldSizeHorizontalNumber) {
-		int TTTN = TimeToThinkNumber;
+    public void my_update( int FieldSizeVerticalNumber, int FieldSizeHorizontalNumber, int RequiredWinningTilesNumber) {
+		
                                         int FSVN = FieldSizeVerticalNumber;
                                         int FSHN = FieldSizeHorizontalNumber;
+                                        int RWTN = RequiredWinningTilesNumber;
 	}
-    private int TTTN,FSVN,FSHN;
+    private int FSVN,FSHN,RWTN;
     JFrame frame = new JFrame();
     JPanel t_panel = new JPanel();
     JPanel bt_panel = new JPanel();
     JLabel textfield = new JLabel();
-    JButton[] bton = new JButton[(FSVN * FSHN)];
+    JButton[][] bton = new JButton[FSVN] [FSHN];
     int chance_flag = 0;
     Random random = new Random();
     boolean pl1_chance;
@@ -24,6 +25,7 @@ public class TicTacToe implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(new Color(100, 100, 100));
         frame.setTitle("Tic Tac Toe");
+        frame.setSize(1000,1000);
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);
         
@@ -33,16 +35,19 @@ public class TicTacToe implements ActionListener {
         textfield.setHorizontalAlignment(JLabel.CENTER);
         textfield.setText("Tic Tac Toe");
         textfield.setOpaque(true);
+        
         t_panel.setLayout(new BorderLayout());
-        t_panel.setBounds(0, 0, 800, 100);
+        t_panel.setBounds(0, 0, 1000, 100);
         bt_panel.setLayout(new GridLayout(FSVN, FSHN));
         bt_panel.setBackground(new Color(150, 150, 150));
-        for (int i = 0; i < (FSVN * FSHN); i++) {
-            bton[i] = new JButton();
-            bt_panel.add(bton[i]);
-            bton[i].setFont(new Font("Ink Free", Font.BOLD, 120));
-            bton[i].setFocusable(false);
-            bton[i].addActionListener(this);
+        for (int i = 0; i < FSVN ; i++) {
+            for (int j = 0; j < FSHN;j++){
+            bton[i][j] = new JButton();
+            bt_panel.add(bton[i][j]);
+            bton[i][j].setFont(new Font("Ink Free", Font.BOLD, 120));
+            bton[i][j].setFocusable(false);
+            bton[i][j].addActionListener(this);
+            }
         }
         
         t_panel.add(textfield);
@@ -80,97 +85,324 @@ public class TicTacToe implements ActionListener {
     
     }
     public void matchCheck() {
-        if ((bton[0].getText() == "X") && (bton[1].getText() == "X") && (bton[2].getText() == "X")) {
-            xWins(0, 1, 2);
+        for(int i = 0; i<FSVN-RWTN;i++){
+        for(int j = 0; j<FSHN-RWTN;j++){
+     //  for(int x= 0; x<FSHN;x++){
+        switch (RWTN){
+            case 3:
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X")) {
+            xWins();
         }
-        else if ((bton[0].getText() == "X") && (bton[4].getText() == "X") && (bton[8].getText() == "X")) {
-            xWins(0, 4, 8);
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O")) {
+            oWins();
         }
-        else if ((bton[0].getText() == "X") && (bton[3].getText() == "X") && (bton[6].getText() == "X")) {
-            xWins(0, 3, 6);
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X")) {
+            xWins();
         }
-        else if ((bton[1].getText() == "X") && (bton[4].getText() == "X") && (bton[7].getText() == "X")) {
-            xWins(1, 4, 7);
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O")) {
+            oWins();
         }
-        else if ((bton[2].getText() == "X") && (bton[4].getText() == "X") && (bton[6].getText() == "X")) {
-            xWins(2, 4, 6);
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X")) {
+            xWins();
         }
-        else if ((bton[2].getText() == "X") && (bton[5].getText() == "X") && (bton[8].getText() == "X")) {
-            xWins(2, 5, 8);
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O")) {
+            oWins();
         }
-       else if ((bton[3].getText() == "X") && (bton[4].getText() == "X") && (bton[5].getText() == "X")) {
-            xWins(3, 4, 5);
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-2].getText() == "X") && (bton[j+1][i-1].getText() == "X") && (bton[j+2][i-0].getText() == "X")) {
+            xWins();
         }
-       else if ((bton[6].getText() == "X") && (bton[7].getText() == "X") && (bton[8].getText() == "X")) {
-            xWins(6, 7, 8);
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-2].getText() == "O") && (bton[j+1][i-1].getText() == "O") && (bton[j+2][i-0].getText() == "O")) {
+            oWins();
         }
-      
-        else if ((bton[0].getText() == "O") && (bton[1].getText() == "O") && (bton[2].getText() == "O")) {
-            oWins(0, 1, 2);
+            case 4://444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X")) {
+            xWins();
         }
-        else if ((bton[0].getText() == "O") && (bton[3].getText() == "O") && (bton[6].getText() == "O")) {
-            oWins(0, 3, 6);
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O")) {
+            oWins();
         }
-        else if ((bton[0].getText() == "O") && (bton[4].getText() == "O") && (bton[8].getText() == "O")) {
-            oWins(0, 4, 8);
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X")) {
+            xWins();
         }
-        else if ((bton[1].getText() == "O") && (bton[4].getText() == "O") && (bton[7].getText() == "O")) {
-            oWins(1, 4, 7);
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O")) {
+            oWins();
         }
-        else if ((bton[2].getText() == "O") && (bton[4].getText() == "O") && (bton[6].getText() == "O")) {
-            oWins(2, 4, 6);
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X")) {
+            xWins();
         }
-        else if ((bton[2].getText() == "O") && (bton[5].getText() == "O") && (bton[8].getText() == "O")) {
-            oWins(2, 5, 8);
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O")) {
+            oWins();
         }
-        else if ((bton[3].getText() == "O") && (bton[4].getText() == "O") && (bton[5].getText() == "O")) {
-            oWins(3, 4, 5);
-        } else if ((bton[6].getText() == "O") && (bton[7].getText() == "O") && (bton[8].getText() == "O")) {
-            oWins(6, 7, 8);
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-3].getText() == "X") && (bton[j+1][i-2].getText() == "X") && (bton[j+2][i-1].getText() == "X") && (bton[j+3][i-0].getText() == "X")) {
+            xWins();
         }
-        else if(chance_flag==(FSVN * FSHN)) {
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-3].getText() == "O") && (bton[j+1][i-2].getText() == "O") && (bton[j+2][i-1].getText() == "O") && (bton[j+3][i-0].getText() == "O")) {
+            oWins();
+        }
+            case 5: //555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X") && (bton[j][i+4].getText() == "X")) {
+            xWins();
+        }
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O") && (bton[j][i+4].getText() == "O")) {
+            oWins();
+        }
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X") && (bton[i][j+4].getText() == "X")) {
+            xWins();
+        }
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O") && (bton[i][j+4].getText() == "O")) {
+            oWins();
+        }
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X") && (bton[j+4][i+4].getText() == "X")) {
+            xWins();
+        }
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O") && (bton[j+4][i+4].getText() == "O")) { 
+            oWins();
+        }
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-4].getText() == "X") && (bton[j+1][i-3].getText() == "X") && (bton[j+2][i-2].getText() == "X") && (bton[j+3][i-1].getText() == "X") && (bton[j+4][i-0].getText() == "X")) {
+            xWins();
+        }
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-4].getText() == "O") && (bton[j+1][i-3].getText() == "O") && (bton[j+2][i-2].getText() == "O") && (bton[j+3][i-1].getText() == "O") && (bton[j+4][i-0].getText() == "O")) {
+            oWins();
+                }
+            case 6:  //666666666666666666666666666666666666666666666666666666666666666
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X") && (bton[j][i+4].getText() == "X") && (bton[j][i+5].getText() == "X")) {
+            xWins();
+        }
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O") && (bton[j][i+4].getText() == "O") && (bton[j][i+5].getText() == "O")) {
+            oWins();
+        }
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X") && (bton[i][j+4].getText() == "X") && (bton[i][j+5].getText() == "X")) {
+            xWins();
+        }
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O") && (bton[i][j+4].getText() == "O") && (bton[i][j+5].getText() == "O")) {
+            oWins();
+        }
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X") && (bton[j+4][i+4].getText() == "X") && (bton[j+5][i+5].getText() == "X")) {
+            xWins();
+        }
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O") && (bton[j+4][i+4].getText() == "O") && (bton[j+5][i+5].getText() == "O")) { 
+            oWins();
+        }
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-5].getText() == "X") && (bton[j+1][i-4].getText() == "X") && (bton[j+2][i-3].getText() == "X") && (bton[j+3][i-2].getText() == "X") && (bton[j+4][i-1].getText() == "X") && (bton[j+5][i-0].getText() == "X")) {
+            xWins();
+        }
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-5].getText() == "O") && (bton[j+1][i-4].getText() == "O") && (bton[j+2][i-3].getText() == "O") && (bton[j+3][i-2].getText() == "O") && (bton[j+4][i-1].getText() == "O") && (bton[j+5][i-0].getText() == "O")) {
+            oWins();
+                }
+            case 7://77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X") && (bton[j][i+4].getText() == "X") && (bton[j][i+5].getText() == "X") && (bton[j][i+6].getText() == "X")) {
+            xWins();
+        }
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O") && (bton[j][i+4].getText() == "O") && (bton[j][i+5].getText() == "O") && (bton[j][i+6].getText() == "O")) {
+            oWins();
+        }
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X") && (bton[i][j+4].getText() == "X") && (bton[i][j+5].getText() == "X") && (bton[i][j+6].getText() == "X")) {
+            xWins();
+        }
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O") && (bton[i][j+4].getText() == "O") && (bton[i][j+5].getText() == "O") && (bton[i][j+6].getText() == "O")) {
+            oWins();
+        }
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X") && (bton[j+4][i+4].getText() == "X") && (bton[j+5][i+5].getText() == "X") && (bton[j+6][i+6].getText() == "X")) {
+            xWins();
+        }
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O") && (bton[j+4][i+4].getText() == "O") && (bton[j+5][i+5].getText() == "O") && (bton[j+6][i+6].getText() == "O")) { 
+            oWins();
+        }
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-6].getText() == "X") && (bton[j+1][i-5].getText() == "X") && (bton[j+2][i-4].getText() == "X") && (bton[j+3][i-3].getText() == "X") && (bton[j+4][i-2].getText() == "X") && (bton[j+5][i-1].getText() == "X") && (bton[j+6][i-0].getText() == "X")) {
+            xWins();
+        }
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-6].getText() == "O") && (bton[j+1][i-5].getText() == "O") && (bton[j+2][i-4].getText() == "O") && (bton[j+3][i-3].getText() == "O") && (bton[j+4][i-2].getText() == "O") && (bton[j+5][i-1].getText() == "O") && (bton[j+6][i-0].getText() == "O")) {
+            oWins();
+                }
+            case 8://88888888888888888888888888888888888888888888888888888888888888888888888888888888
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X") && (bton[j][i+4].getText() == "X") && (bton[j][i+5].getText() == "X") && (bton[j][i+6].getText() == "X") && (bton[j][i+7].getText() == "X")) {
+            xWins();
+        }
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O") && (bton[j][i+4].getText() == "O") && (bton[j][i+5].getText() == "O") && (bton[j][i+6].getText() == "O") && (bton[j][i+7].getText() == "O")) {
+            oWins();
+        }
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X") && (bton[i][j+4].getText() == "X") && (bton[i][j+5].getText() == "X") && (bton[i][j+6].getText() == "X") && (bton[i][j+7].getText() == "X")) {
+            xWins();
+        }
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O") && (bton[i][j+4].getText() == "O") && (bton[i][j+5].getText() == "O") && (bton[i][j+6].getText() == "O") && (bton[i][j+7].getText() == "O")) {
+            oWins();
+        }
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X") && (bton[j+4][i+4].getText() == "X") && (bton[j+5][i+5].getText() == "X") && (bton[j+6][i+6].getText() == "X") && (bton[j+7][i+7].getText() == "X")) {
+            xWins();
+        }
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O") && (bton[j+4][i+4].getText() == "O") && (bton[j+5][i+5].getText() == "O") && (bton[j+6][i+6].getText() == "O") && (bton[j+7][i+7].getText() == "O")) { 
+            oWins();
+        }
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-7].getText() == "X") && (bton[j+1][i-6].getText() == "X") && (bton[j+2][i-5].getText() == "X") && (bton[j+3][i-4].getText() == "X") && (bton[j+4][i-3].getText() == "X") && (bton[j+5][i-2].getText() == "X") && (bton[j+6][i-1].getText() == "X") && (bton[j+7][i-0].getText() == "X")) {
+            xWins();
+        }
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-7].getText() == "O") && (bton[j+1][i-6].getText() == "O") && (bton[j+2][i-5].getText() == "O") && (bton[j+3][i-4].getText() == "O") && (bton[j+4][i-3].getText() == "O") && (bton[j+5][i-2].getText() == "O") && (bton[j+6][i-1].getText() == "O") && (bton[j+7][i-0].getText() == "O")) {
+            oWins();
+                }
+            case 9://99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X") && (bton[j][i+4].getText() == "X") && (bton[j][i+5].getText() == "X") && (bton[j][i+6].getText() == "X") && (bton[j][i+7].getText() == "X") && (bton[j][i+8].getText() == "X")) {
+            xWins();
+        }
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O") && (bton[j][i+4].getText() == "O") && (bton[j][i+5].getText() == "O") && (bton[j][i+6].getText() == "O") && (bton[j][i+7].getText() == "O") && (bton[j][i+8].getText() == "O")) {
+            oWins();
+        }
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X") && (bton[i][j+4].getText() == "X") && (bton[i][j+5].getText() == "X") && (bton[i][j+6].getText() == "X") && (bton[i][j+7].getText() == "X") && (bton[i][j+8].getText() == "X")) {
+            xWins();
+        }
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O") && (bton[i][j+4].getText() == "O") && (bton[i][j+5].getText() == "O") && (bton[i][j+6].getText() == "O") && (bton[i][j+7].getText() == "O") && (bton[i][j+8].getText() == "O")) {
+            oWins();
+        }
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X") && (bton[j+4][i+4].getText() == "X") && (bton[j+5][i+5].getText() == "X") && (bton[j+6][i+6].getText() == "X") && (bton[j+7][i+7].getText() == "X") && (bton[j+8][i+8].getText() == "X")) {
+            xWins();
+        }
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O") && (bton[j+4][i+4].getText() == "O") && (bton[j+5][i+5].getText() == "O") && (bton[j+6][i+6].getText() == "O") && (bton[j+7][i+7].getText() == "O") && (bton[j+8][i+8].getText() == "O")) { 
+            oWins();
+        }
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-8].getText() == "X") && (bton[j+1][i-7].getText() == "X") && (bton[j+2][i-6].getText() == "X") && (bton[j+3][i-5].getText() == "X") && (bton[j+4][i-4].getText() == "X") && (bton[j+5][i-3].getText() == "X") && (bton[j+6][i-2].getText() == "X") && (bton[j+7][i-1].getText() == "X") && (bton[j+8][i-0].getText() == "X")) {
+            xWins();
+        }
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-8].getText() == "O") && (bton[j+1][i-7].getText() == "O") && (bton[j+2][i-6].getText() == "O") && (bton[j+3][i-5].getText() == "O") && (bton[j+4][i-4].getText() == "O") && (bton[j+5][i-3].getText() == "O") && (bton[j+6][i-2].getText() == "O") && (bton[j+7][i-1].getText() == "O") && (bton[j+8][i-0].getText() == "O")) {
+            oWins();
+                }
+            case 10://1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+                //stlpce  X
+                if ((bton[j][i+0].getText() == "X") && (bton[j][i+1].getText() == "X") && (bton[j][i+2].getText() == "X") && (bton[j][i+3].getText() == "X") && (bton[j][i+4].getText() == "X") && (bton[j][i+5].getText() == "X") && (bton[j][i+6].getText() == "X") && (bton[j][i+7].getText() == "X") && (bton[j][i+8].getText() == "X") && (bton[j][i+9].getText() == "X")) {
+            xWins();
+        }
+                //stlpce  O
+                else if ((bton[j][i+0].getText() == "O") && (bton[j][i+1].getText() == "O") && (bton[j][i+2].getText() == "O") && (bton[j][i+3].getText() == "O") && (bton[j][i+4].getText() == "O") && (bton[j][i+5].getText() == "O") && (bton[j][i+6].getText() == "O") && (bton[j][i+7].getText() == "O") && (bton[j][i+8].getText() == "O") && (bton[j][i+9].getText() == "O")) {
+            oWins();
+        }
+                //riadky  X
+               else if ((bton[i][j+0].getText() == "X") && (bton[i][j+1].getText() == "X") && (bton[i][j+2].getText() == "X") && (bton[i][j+3].getText() == "X") && (bton[i][j+4].getText() == "X") && (bton[i][j+5].getText() == "X") && (bton[i][j+6].getText() == "X") && (bton[i][j+7].getText() == "X") && (bton[i][j+8].getText() == "X") && (bton[i][j+9].getText() == "X")) {
+            xWins();
+        }
+                //riadky  O
+                else if ((bton[i][j+0].getText() == "O") && (bton[i][j+1].getText() == "O") && (bton[i][j+2].getText() == "O") && (bton[i][j+3].getText() == "O") && (bton[i][j+4].getText() == "O") && (bton[i][j+5].getText() == "O") && (bton[i][j+6].getText() == "O") && (bton[i][j+7].getText() == "O") && (bton[i][j+8].getText() == "O") && (bton[i][j+9].getText() == "O")) {
+            oWins();
+        }
+                //sikmo  X
+                else if ((bton[j+0][i+0].getText() == "X") && (bton[j+1][i+1].getText() == "X") && (bton[j+2][i+2].getText() == "X") && (bton[j+3][i+3].getText() == "X") && (bton[j+4][i+4].getText() == "X") && (bton[j+5][i+5].getText() == "X") && (bton[j+6][i+6].getText() == "X") && (bton[j+7][i+7].getText() == "X") && (bton[j+8][i+8].getText() == "X") && (bton[j+9][i+9].getText() == "X")) {
+            xWins();
+        }
+                //sikmo  O
+                else if ((bton[j+0][i+0].getText() == "O") && (bton[j+1][i+1].getText() == "O") && (bton[j+2][i+2].getText() == "O") && (bton[j+3][i+3].getText() == "O") && (bton[j+4][i+4].getText() == "O") && (bton[j+5][i+5].getText() == "O") && (bton[j+6][i+6].getText() == "O") && (bton[j+7][i+7].getText() == "O") && (bton[j+8][i+8].getText() == "O") && (bton[j+9][i+9].getText() == "O")) { 
+            oWins();
+        }
+                 //NEGAsikmo  X
+                else if ((bton[j+0][i-9].getText() == "X") && (bton[j+1][i-8].getText() == "X") && (bton[j+2][i-7].getText() == "X") && (bton[j+3][i-6].getText() == "X") && (bton[j+4][i-5].getText() == "X") && (bton[j+5][i-4].getText() == "X") && (bton[j+6][i-3].getText() == "X") && (bton[j+7][i-2].getText() == "X") && (bton[j+8][i-1].getText() == "X") && (bton[j+9][i-0].getText() == "X")) {
+            xWins();
+        }
+                //NEGAsikmo  O
+                else if ((bton[j+0][i-9].getText() == "O") && (bton[j+1][i-8].getText() == "O") && (bton[j+2][i-7].getText() == "O") && (bton[j+3][i-6].getText() == "O") && (bton[j+4][i-5].getText() == "O") && (bton[j+5][i-4].getText() == "O") && (bton[j+6][i-3].getText() == "O") && (bton[j+7][i-2].getText() == "O") && (bton[j+8][i-1].getText() == "O") && (bton[j+9][i-0].getText() == "O")) {
+            oWins();
+                }
+        }
+        
+       
+         if(chance_flag==(FSVN * FSHN)) {
             textfield.setText("Match Tie");
              gameOver("Match Tie");
         }
-    }
-    public void xWins(int x1, int x2, int x3) {
-        bton[x1].setBackground(Color.RED);
-        bton[x2].setBackground(Color.RED);
-        bton[x3].setBackground(Color.RED);
-        for (int i = 0; i < (FSVN * FSHN); i++) {
-            bton[i].setEnabled(false);
+         //}
         }
+        }
+    }
+    public void xWins() {
+        
+          for (int i = 0; i < FSVN; i++) {
+            for (int j = 0; j < FSHN; j++) {
+            bton[i][j].setEnabled(false);
+        }
+    }
         textfield.setText("X vyhral");
         gameOver("X vyhral");
     }
-    public void oWins(int x1, int x2, int x3) {
-        bton[x1].setBackground(Color.RED);
-        bton[x2].setBackground(Color.RED);
-        bton[x3].setBackground(Color.RED);
-        for (int i = 0; i < (FSVN * FSHN); i++) {
-            bton[i].setEnabled(false);
+    public void oWins() {
+     
+        for (int i = 0; i < FSVN; i++) {
+            for (int j = 0; j < FSHN; j++) {
+            bton[i][j].setEnabled(false);
         }
+    }
         textfield.setText("O vyhral");
         gameOver("O vyhral");
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < (FSVN * FSHN); i++) {
-            if (e.getSource() == bton[i]) {
+        for (int i = 0; i < FSVN ; i++) {
+            for (int j = 0; j < FSHN; j++) {
+            if (e.getSource() == bton[i][j]) {
                 if (pl1_chance) {
-                    if (bton[i].getText() == "") {
-                        bton[i].setForeground(new Color(255, 0, 0));
-                        bton[i].setText("X");
+                    if (bton[i][j].getText() == "") {
+                        bton[i][j].setForeground(new Color(255, 0, 0));
+                        bton[i][j].setText("X");
                         pl1_chance = false;
                         textfield.setText("O je na ťahu");
                         chance_flag++;
                         matchCheck();
                     }
                 } else {
-                    if (bton[i].getText() == "") {
-                        bton[i].setForeground(new Color(0, 0, 255));
-                        bton[i].setText("O");
+                    if (bton[i][j].getText() == "") {
+                        bton[i][j].setForeground(new Color(0, 0, 255));
+                        bton[i][j].setText("O");
                         pl1_chance = true;
                         textfield.setText("X je na ťahu");
                         chance_flag++;
@@ -179,5 +411,6 @@ public class TicTacToe implements ActionListener {
                 }
             }
         }
+    }
     }
 }

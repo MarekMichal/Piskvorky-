@@ -38,7 +38,7 @@ public class Start extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         TimeToThinkInt = new javax.swing.JTextField();
         FieldSizeHorizontalInt = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        RequiredWinningTilesInt = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         FieldSizeVerticalInt = new javax.swing.JTextField();
@@ -89,7 +89,7 @@ public class Start extends javax.swing.JFrame {
 
         FieldSizeHorizontalInt.setText("jTextField3");
 
-        jTextField4.setText("jTextField4");
+        RequiredWinningTilesInt.setText("jTextField4");
 
         jTextField5.setText("jTextField5");
 
@@ -125,17 +125,14 @@ public class Start extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(FieldSizeVerticalInt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(FieldSizeHorizontalInt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addContainerGap())
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap()))
+                                            .addComponent(FieldSizeHorizontalInt, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TimeToThinkInt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap())))
+                                    .addComponent(RequiredWinningTilesInt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TimeToThinkInt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -166,7 +163,7 @@ public class Start extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RequiredWinningTilesInt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -204,16 +201,20 @@ public class Start extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-       String TimeToThink = TimeToThinkInt.getText();
-        int TimeToThinkNumber = Integer.valueOf(TimeToThink);
+       
         
         String FieldSizeVertical = FieldSizeVerticalInt.getText();
         int FieldSizeVerticalNumber = Integer.valueOf(FieldSizeVertical);
+        
         String FieldSizeHorizontal = FieldSizeHorizontalInt.getText();
         int FieldSizeHorizontalNumber = Integer.valueOf(FieldSizeHorizontal);
+        
+        String RequiredWinningTiles = RequiredWinningTilesInt.getText();
+        int RequiredWinningTilesNumber = Integer.valueOf(RequiredWinningTiles);
+        
         TicTacToe obj= new TicTacToe();
-        obj.my_update( TimeToThinkNumber,  FieldSizeVerticalNumber,  FieldSizeHorizontalNumber);
-        new TicTacToe();
+        obj.my_update(   FieldSizeVerticalNumber,  FieldSizeHorizontalNumber, RequiredWinningTilesNumber);
+      //  new TicTacToe();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -258,6 +259,7 @@ public class Start extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FieldSizeHorizontalInt;
     private javax.swing.JTextField FieldSizeVerticalInt;
+    private javax.swing.JTextField RequiredWinningTilesInt;
     private javax.swing.JTextField TimeToThinkInt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -269,7 +271,6 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables

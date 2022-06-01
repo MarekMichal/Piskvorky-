@@ -12,7 +12,7 @@ import java.sql.Statement;
  */
 public class Login extends javax.swing.JFrame {
     
-public static boolean LoggedIn;
+public static boolean LoggedIn = false;
 
     /**
      * Creates new form Login
@@ -148,8 +148,11 @@ public static boolean LoggedIn;
         try {
             Connection DB = Database.connect();
             String userpassword = Database.getPassword(DB, email);
-            if(userpassword == password)
+            System.out.println(userpassword);
+            System.out.println(password);
+            if(userpassword.equals(password) )
                     {
+                        System.out.println("hellllo");
                    LoggedIn = true;
                     }
             
