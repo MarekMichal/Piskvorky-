@@ -84,21 +84,7 @@ public class Database {
     }
 
     //ziskat informacie o penazoch podla emailu
-    public static int getMoney(Connection DB, String email){
-        PreparedStatement ps = null;
-        ResultSet result = null;
-
-        try{
-            String sql = "SELECT money FROM user WHERE email = ?";
-            ps = DB.prepareStatement(sql);
-            ps.setString(1, email);
-            result = ps.executeQuery();
-
-            return result.getInt(1);
-        } catch (SQLException e) {
-            throw new RuntimeException(e.toString());
-        }
-    }
+   
 
     public static int getVyhry(Connection DB, String email){
         PreparedStatement ps = null;
@@ -144,6 +130,22 @@ public class Database {
             result = ps.executeQuery();
 
             return result.getInt(1);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.toString());
+        }
+    }
+    public static String getMeno(Connection DB, String email){
+        PreparedStatement ps = null;
+        ResultSet result = null;
+
+        try{
+            String sql = "SELECT nick FROM user WHERE email = ?";
+            ps = DB.prepareStatement(sql);
+            ps.setString(1, email);
+            result = ps.executeQuery();
+
+            return result.getString(1);
 
         } catch (SQLException e) {
             throw new RuntimeException(e.toString());

@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author marek
@@ -13,6 +16,7 @@ import java.sql.Statement;
 public class Login extends javax.swing.JFrame {
     
 public static boolean LoggedIn = false;
+public static String user_mail;
 
     /**
      * Creates new form Login
@@ -153,15 +157,22 @@ public static boolean LoggedIn = false;
             if(userpassword.equals(password) )
                     {
                         System.out.println("hellllo");
-                   LoggedIn = true;
+                           LoggedIn = true;
+                           user_mail = email;
+                    
+            Profile1 jfrm2= new Profile1();
+            jfrm2.setVisible(true);
+            this.setVisible(false);
+            this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+            this.dispose();
                     }
+            else{
+                Component JFrame = null;
+               JOptionPane.showMessageDialog(JFrame, "Zle heslo alebo mail"); 
+            }
             
-            /*    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/piskvorky","root","");
-                Statement sta = connection.createStatement();
+           
 
-                sta.executeUpdate("SELECT FROM users (email, password)"
-                +"VALUES ( '"+email+"', '"+password+"')");
-*/
             }
             catch (Exception e){
                 System.out.println(e.getMessage());
