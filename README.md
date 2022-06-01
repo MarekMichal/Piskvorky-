@@ -6,15 +6,8 @@
 - Register
 - Pause
 - Login
-- In game shop
 ## Profil
 - Nick
-- Avatar
-- In game money
-## Shop
-- Farba kruhov a krížikov
-- Avatar (https://fireart.studio/cases/google-play/)
-- Farba Nicku
 ## Nastavenia hry
 - Sound slider
 - Music slider
@@ -31,10 +24,6 @@
  (funkčnosť)
 - Steny
  (funkčnosť)
-- Žolíky
- (funkčnosť)
-- Časovač na online
- (čas na ťah)
 - Score
 - Win/lose screen
 ## Databáza
