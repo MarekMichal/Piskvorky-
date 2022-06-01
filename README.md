@@ -8,11 +8,6 @@
 - Login
 ## Profil
 - Nick
-## Nastavenia hry
-- Sound slider
-- Music slider
-- Farba stien a žolíkov
-- Veľkosť a tvar krížikov
 ## Hracie pole
 - Veľkosť poľa
 - Percento zaplnenia stien a žolíkov 
